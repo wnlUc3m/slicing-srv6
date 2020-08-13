@@ -1,0 +1,6266 @@
+{
+  "header_types" : [
+    {
+      "name" : "scalars_0",
+      "id" : 0,
+      "fields" : [
+        ["tmp", 4, false],
+        ["tmp_0", 4, false],
+        ["metadata._srv6_meta_teid0", 32, false],
+        ["metadata._srv6_meta_EndMGTP6E_SRGW1", 96, false],
+        ["metadata._srv6_meta_segmentsLeft2", 8, false],
+        ["metadata._srv6_meta_ipv6_payloadLen3", 16, false]
+      ]
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "fields" : [
+        ["ingress_port", 9, false],
+        ["egress_spec", 9, false],
+        ["egress_port", 9, false],
+        ["clone_spec", 32, false],
+        ["instance_type", 32, false],
+        ["drop", 1, false],
+        ["recirculate_port", 16, false],
+        ["packet_length", 32, false],
+        ["checksum_error", 1, false],
+        ["parser_error", 32, false],
+        ["_padding", 3, false]
+      ]
+    },
+    {
+      "name" : "ethernet_t",
+      "id" : 2,
+      "fields" : [
+        ["dstAddr", 48, false],
+        ["srcAddr", 48, false],
+        ["etherType", 16, false]
+      ]
+    },
+    {
+      "name" : "gtpu_t",
+      "id" : 3,
+      "fields" : [
+        ["flags", 8, false],
+        ["type", 8, false],
+        ["length", 16, false],
+        ["teid", 32, false]
+      ]
+    },
+    {
+      "name" : "ipv4_t",
+      "id" : 4,
+      "fields" : [
+        ["version", 4, false],
+        ["ihl", 4, false],
+        ["diffserv", 8, false],
+        ["totalLen", 16, false],
+        ["identification", 16, false],
+        ["flags", 3, false],
+        ["fragOffset", 13, false],
+        ["ttl", 8, false],
+        ["protocol", 8, false],
+        ["hdrChecksum", 16, false],
+        ["srcAddr", 32, false],
+        ["dstAddr", 32, false]
+      ]
+    },
+    {
+      "name" : "ipv6_t",
+      "id" : 5,
+      "fields" : [
+        ["version", 4, false],
+        ["trafficClass", 8, false],
+        ["flowLabel", 20, false],
+        ["payloadLen", 16, false],
+        ["nextHdr", 8, false],
+        ["hopLimit", 8, false],
+        ["srcAddr", 128, false],
+        ["dstAddr", 128, false]
+      ]
+    },
+    {
+      "name" : "ipv6_srh_t",
+      "id" : 6,
+      "fields" : [
+        ["nextHeader", 8, false],
+        ["hdrExtLen", 8, false],
+        ["routingType", 8, false],
+        ["segmentsLeft", 8, false],
+        ["lastEntry", 8, false],
+        ["flags", 8, false],
+        ["tag", 16, false]
+      ]
+    },
+    {
+      "name" : "tcp_t",
+      "id" : 7,
+      "fields" : [
+        ["srcPort", 16, false],
+        ["dstPort", 16, false],
+        ["seqNo", 32, false],
+        ["ackNo", 32, false],
+        ["dataOffset", 4, false],
+        ["res", 4, false],
+        ["flags", 8, false],
+        ["window", 16, false],
+        ["checksum", 16, false],
+        ["urgentPtr", 16, false]
+      ]
+    },
+    {
+      "name" : "udp_t",
+      "id" : 8,
+      "fields" : [
+        ["srcPort", 16, false],
+        ["dstPort", 16, false],
+        ["length_", 16, false],
+        ["checksum", 16, false]
+      ]
+    },
+    {
+      "name" : "ipv6_srh_segment_t",
+      "id" : 9,
+      "fields" : [
+        ["sid", 128, false]
+      ]
+    }
+  ],
+  "headers" : [
+    {
+      "name" : "scalars",
+      "id" : 0,
+      "header_type" : "scalars_0",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "header_type" : "standard_metadata",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ethernet",
+      "id" : 2,
+      "header_type" : "ethernet_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "gtpu",
+      "id" : 3,
+      "header_type" : "gtpu_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "gtpu_ipv4",
+      "id" : 4,
+      "header_type" : "ipv4_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "gtpu_ipv6",
+      "id" : 5,
+      "header_type" : "ipv6_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv4",
+      "id" : 6,
+      "header_type" : "ipv4_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv6",
+      "id" : 7,
+      "header_type" : "ipv6_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv6_inner",
+      "id" : 8,
+      "header_type" : "ipv6_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv6_srh",
+      "id" : 9,
+      "header_type" : "ipv6_srh_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "tcp",
+      "id" : 10,
+      "header_type" : "tcp_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "udp",
+      "id" : 11,
+      "header_type" : "udp_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv6_srh_segment_list[0]",
+      "id" : 12,
+      "header_type" : "ipv6_srh_segment_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv6_srh_segment_list[1]",
+      "id" : 13,
+      "header_type" : "ipv6_srh_segment_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv6_srh_segment_list[2]",
+      "id" : 14,
+      "header_type" : "ipv6_srh_segment_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv6_srh_segment_list[3]",
+      "id" : 15,
+      "header_type" : "ipv6_srh_segment_t",
+      "metadata" : false,
+      "pi_omit" : true
+    }
+  ],
+  "header_stacks" : [
+    {
+      "name" : "ipv6_srh_segment_list",
+      "id" : 0,
+      "header_type" : "ipv6_srh_segment_t",
+      "size" : 4,
+      "header_ids" : [12, 13, 14, 15]
+    }
+  ],
+  "header_union_types" : [],
+  "header_unions" : [],
+  "header_union_stacks" : [],
+  "field_lists" : [],
+  "errors" : [
+    ["NoError", 1],
+    ["PacketTooShort", 2],
+    ["NoMatch", 3],
+    ["StackOutOfBounds", 4],
+    ["HeaderTooShort", 5],
+    ["ParserTimeout", 6]
+  ],
+  "enums" : [],
+  "parsers" : [
+    {
+      "name" : "parser",
+      "id" : 0,
+      "init_state" : "start",
+      "parse_states" : [
+        {
+          "name" : "parse_ethernet",
+          "id" : 0,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ethernet"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x86dd",
+              "mask" : null,
+              "next_state" : "parse_ipv6"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "etherType"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_gtpu",
+          "id" : 1,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "gtpu"
+                }
+              ],
+              "op" : "extract"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "tmp"]
+                },
+                {
+                  "type" : "lookahead",
+                  "value" : [0, 4]
+                }
+              ],
+              "op" : "set"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "tmp_0"]
+                },
+                {
+                  "type" : "expression",
+                  "value" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "tmp"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0f"
+                      }
+                    }
+                  }
+                }
+              ],
+              "op" : "set"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x04",
+              "mask" : null,
+              "next_state" : "parse_gtpu_ipv4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x06",
+              "mask" : null,
+              "next_state" : "parse_gtpu_ipv6"
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_0"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_gtpu_ipv4",
+          "id" : 2,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "gtpu_ipv4"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "parse_gtpu_ipv6",
+          "id" : 3,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "gtpu_ipv6"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "parse_ipv4",
+          "id" : 4,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv4"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x06",
+              "mask" : null,
+              "next_state" : "parse_tcp"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x11",
+              "mask" : null,
+              "next_state" : "parse_udp"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv6",
+          "id" : 5,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv6"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x06",
+              "mask" : null,
+              "next_state" : "parse_tcp"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x11",
+              "mask" : null,
+              "next_state" : "parse_udp"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2b",
+              "mask" : null,
+              "next_state" : "parse_ipv6_srh"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv6_inner",
+          "id" : 6,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv6_inner"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "parse_ipv6_srh",
+          "id" : 7,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv6_srh"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : "parse_ipv6_srh_seg0"
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "parse_ipv6_srh_payload",
+          "id" : 8,
+          "parser_ops" : [],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x04",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x06",
+              "mask" : null,
+              "next_state" : "parse_tcp"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x11",
+              "mask" : null,
+              "next_state" : "parse_udp"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x29",
+              "mask" : null,
+              "next_state" : "parse_ipv6_inner"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv6_srh_seg0",
+          "id" : 9,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv6_srh_segment_list[0]"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x00",
+              "mask" : null,
+              "next_state" : "parse_ipv6_srh_payload"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : "parse_ipv6_srh_seg1"
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv6_srh_seg1",
+          "id" : 10,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv6_srh_segment_list[1]"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x01",
+              "mask" : null,
+              "next_state" : "parse_ipv6_srh_payload"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : "parse_ipv6_srh_seg2"
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv6_srh_seg2",
+          "id" : 11,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv6_srh_segment_list[2]"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x02",
+              "mask" : null,
+              "next_state" : "parse_ipv6_srh_payload"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : "parse_ipv6_srh_seg3"
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv6_srh_seg3",
+          "id" : 12,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv6_srh_segment_list[3]"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : "parse_ipv6_srh_payload"
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "parse_tcp",
+          "id" : 13,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "tcp"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "parse_udp",
+          "id" : 14,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "udp"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x0868",
+              "mask" : null,
+              "next_state" : "parse_gtpu"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "dstPort"]
+            }
+          ]
+        },
+        {
+          "name" : "start",
+          "id" : 15,
+          "parser_ops" : [],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : "parse_ethernet"
+            }
+          ],
+          "transition_key" : []
+        }
+      ]
+    }
+  ],
+  "parse_vsets" : [],
+  "deparsers" : [
+    {
+      "name" : "deparser",
+      "id" : 0,
+      "order" : ["ethernet", "ipv6", "ipv6_srh", "ipv6_srh_segment_list[0]", "ipv6_srh_segment_list[1]", "ipv6_srh_segment_list[2]", "ipv6_srh_segment_list[3]", "ipv6_inner", "ipv4", "udp", "gtpu", "gtpu_ipv6", "gtpu_ipv4", "tcp"]
+    }
+  ],
+  "meter_arrays" : [],
+  "counter_arrays" : [],
+  "register_arrays" : [],
+  "calculations" : [],
+  "learn_lists" : [],
+  "actions" : [
+    {
+      "name" : "NoAction",
+      "id" : 0,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 1,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 2,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "forward",
+      "id" : 3,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "p4srv6.p4",
+            "line" : 31,
+            "column" : 15,
+            "source_fragment" : "port) { ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "_drop",
+      "id" : 4,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "drop",
+          "parameters" : [],
+          "source_info" : {
+            "filename" : "p4srv6.p4",
+            "line" : 29,
+            "column" : 1,
+            "source_fragment" : "drop()"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "gtpu_encap_v6",
+      "id" : 5,
+      "runtime_data" : [
+        {
+          "name" : "srcAddr",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "dstAddr",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "srcPort",
+          "bitwidth" : 16
+        },
+        {
+          "name" : "dstPort",
+          "bitwidth" : 16
+        },
+        {
+          "name" : "type",
+          "bitwidth" : 8
+        },
+        {
+          "name" : "teid",
+          "bitwidth" : 32
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "udp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 62,
+            "column" : 4,
+            "source_fragment" : "add_header(udp)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "gtpu"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 63,
+            "column" : 4,
+            "source_fragment" : "add_header(gtpu)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "gtpu_ipv6"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 64,
+            "column" : 4,
+            "source_fragment" : "add_header(gtpu_ipv6)"
+          }
+        },
+        {
+          "op" : "assign_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "gtpu_ipv6"
+            },
+            {
+              "type" : "header",
+              "value" : "ipv6"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 65,
+            "column" : 4,
+            "source_fragment" : "copy_header(gtpu_ipv6, ipv6)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0024"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 67,
+            "column" : 1,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 20+8+8)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x11"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 68,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 17)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "srcAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 60,
+            "column" : 21,
+            "source_fragment" : "srcAddr, dstAddr, srcPort, dstPort, type, teid) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 60,
+            "column" : 30,
+            "source_fragment" : "dstAddr, srcPort, dstPort, type, teid) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "srcPort"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 60,
+            "column" : 39,
+            "source_fragment" : "srcPort, dstPort, type, teid) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "dstPort"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 60,
+            "column" : 48,
+            "source_fragment" : "dstPort, type, teid) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "length_"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xffec"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 74,
+            "column" : 1,
+            "source_fragment" : "modify_field(udp.length_, ipv6.payloadLen-20)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["gtpu", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x30"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 78,
+            "column" : 1,
+            "source_fragment" : "modify_field(gtpu.flags, 0x30)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["gtpu", "type"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 4
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 60,
+            "column" : 57,
+            "source_fragment" : "type, teid) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["gtpu", "length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "+",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["ipv6", "payloadLen"]
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xffec"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xfff0"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 80,
+            "column" : 1,
+            "source_fragment" : "modify_field(gtpu.length, udp.length_-16)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["gtpu", "teid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 5
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 60,
+            "column" : 63,
+            "source_fragment" : "teid) { ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "gtpu_decap_v6",
+      "id" : 6,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6"
+            },
+            {
+              "type" : "header",
+              "value" : "gtpu_ipv6"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 85,
+            "column" : 1,
+            "source_fragment" : "copy_header(ipv6, gtpu_ipv6)"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "udp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 86,
+            "column" : 1,
+            "source_fragment" : "remove_header(udp)"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "gtpu"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 87,
+            "column" : 1,
+            "source_fragment" : "remove_header(gtpu)"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "gtpu_ipv6"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/gtp.p4",
+            "line" : 88,
+            "column" : 1,
+            "source_fragment" : "remove_header(gtpu_ipv6)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_T_Insert1",
+      "id" : 7,
+      "runtime_data" : [
+        {
+          "name" : "sid0",
+          "bitwidth" : 128
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 108,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 109,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, proto); ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "routingType"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 111,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.routingType, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 114,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.flags, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "tag"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 115,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.tag, 0)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 138,
+            "column" : 4,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 139,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh_segment_list[0].sid, ipv6.dstAddr)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 140,
+            "column" : 4,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[1])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[1]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 136,
+            "column" : 22,
+            "source_fragment" : "sid0) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "hdrExtLen"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 142,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.hdrExtLen, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 143,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.segmentsLeft, 1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 144,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.lastEntry, 1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2b"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 146,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 43)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 136,
+            "column" : 22,
+            "source_fragment" : "sid0) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0028"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 148,
+            "column" : 4,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 8+16*2)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_T_Insert2",
+      "id" : 8,
+      "runtime_data" : [
+        {
+          "name" : "sid0",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid1",
+          "bitwidth" : 128
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 108,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 109,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, proto); ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "routingType"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 111,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.routingType, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 114,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.flags, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "tag"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 115,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.tag, 0)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 152,
+            "column" : 4,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 153,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh_segment_list[0].sid, ipv6.dstAddr)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 154,
+            "column" : 4,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[1])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[1]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 150,
+            "column" : 28,
+            "source_fragment" : "sid1) { ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[2]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 156,
+            "column" : 4,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[2])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[2]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 150,
+            "column" : 22,
+            "source_fragment" : "sid0, sid1) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "hdrExtLen"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x06"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 158,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.hdrExtLen, 6)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 159,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.segmentsLeft, 2)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 160,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.lastEntry, 2)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2b"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 162,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 43)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 150,
+            "column" : 22,
+            "source_fragment" : "sid0, sid1) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0038"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 164,
+            "column" : 4,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 8+16*3)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_T_Insert3",
+      "id" : 9,
+      "runtime_data" : [
+        {
+          "name" : "sid0",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid1",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid2",
+          "bitwidth" : 128
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 108,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 109,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, proto); ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "routingType"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 111,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.routingType, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 114,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.flags, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "tag"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 115,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.tag, 0)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 168,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 169,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh_segment_list[0].sid, ipv6.dstAddr)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 170,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[1])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[1]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 166,
+            "column" : 34,
+            "source_fragment" : "sid2) { ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[2]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 172,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[2])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[2]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 166,
+            "column" : 28,
+            "source_fragment" : "sid1, sid2) { ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[3]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 174,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[3])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[3]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 166,
+            "column" : 22,
+            "source_fragment" : "sid0, sid1, sid2) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "hdrExtLen"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x08"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 176,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.hdrExtLen, 8)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x03"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 177,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.segmentsLeft, 3)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x03"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 178,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.lastEntry, 3)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2b"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 180,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 43)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 166,
+            "column" : 22,
+            "source_fragment" : "sid0, sid1, sid2) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0048"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 182,
+            "column" : 1,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 8+16*4)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_T_Encaps2",
+      "id" : 10,
+      "runtime_data" : [
+        {
+          "name" : "srcAddr",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid0",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid1",
+          "bitwidth" : 128
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 122,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_inner)"
+          }
+        },
+        {
+          "op" : "assign_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            },
+            {
+              "type" : "header",
+              "value" : "ipv6"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 123,
+            "column" : 1,
+            "source_fragment" : "copy_header(ipv6_inner, ipv6)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0028"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 125,
+            "column" : 1,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 40)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "srcAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 127,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.srcAddr, srcAddr); ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 108,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x29"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 109,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, proto); ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "routingType"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 111,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.routingType, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 114,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.flags, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "tag"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 115,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.tag, 0)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 202,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 198,
+            "column" : 37,
+            "source_fragment" : "sid1) { ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 204,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[1])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[1]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 198,
+            "column" : 31,
+            "source_fragment" : "sid0, sid1) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "hdrExtLen"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 206,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.hdrExtLen, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 207,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.segmentsLeft, 1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 208,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.lastEntry, 1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2b"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 210,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 43)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 198,
+            "column" : 31,
+            "source_fragment" : "sid0, sid1) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0028"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 212,
+            "column" : 1,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 8+16*2)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_T_Encaps1",
+      "id" : 11,
+      "runtime_data" : [
+        {
+          "name" : "srcAddr",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid0",
+          "bitwidth" : 128
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 122,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_inner)"
+          }
+        },
+        {
+          "op" : "assign_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            },
+            {
+              "type" : "header",
+              "value" : "ipv6"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 123,
+            "column" : 1,
+            "source_fragment" : "copy_header(ipv6_inner, ipv6)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0028"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 125,
+            "column" : 1,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 40)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "srcAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 127,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.srcAddr, srcAddr); ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 108,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x29"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 109,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, proto); ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "routingType"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 111,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.routingType, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 114,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.flags, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "tag"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 115,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.tag, 0)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 188,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 185,
+            "column" : 31,
+            "source_fragment" : "sid0) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "hdrExtLen"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 190,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.hdrExtLen, 2)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 191,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.segmentsLeft, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 192,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.lastEntry, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2b"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 194,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 43)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 185,
+            "column" : 31,
+            "source_fragment" : "sid0) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0018"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 196,
+            "column" : 1,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 8+16*1)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_T_Encaps3",
+      "id" : 12,
+      "runtime_data" : [
+        {
+          "name" : "srcAddr",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid0",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid1",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid2",
+          "bitwidth" : 128
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 122,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_inner)"
+          }
+        },
+        {
+          "op" : "assign_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            },
+            {
+              "type" : "header",
+              "value" : "ipv6"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 123,
+            "column" : 1,
+            "source_fragment" : "copy_header(ipv6_inner, ipv6)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0028"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 125,
+            "column" : 1,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 40)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "srcAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 127,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.srcAddr, srcAddr); ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 108,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x29"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 109,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, proto); ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "routingType"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 111,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.routingType, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 114,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.flags, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "tag"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 115,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.tag, 0)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 218,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 214,
+            "column" : 43,
+            "source_fragment" : "sid2) { ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 220,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[1])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[1]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 214,
+            "column" : 37,
+            "source_fragment" : "sid1, sid2) { ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[2]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 222,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[2])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[2]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 214,
+            "column" : 31,
+            "source_fragment" : "sid0, sid1, sid2) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "hdrExtLen"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x06"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 224,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.hdrExtLen, 6)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 225,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.segmentsLeft, 2)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 226,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.lastEntry, 2)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2b"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 228,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 43)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 214,
+            "column" : 31,
+            "source_fragment" : "sid0, sid1, sid2) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0038"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 230,
+            "column" : 1,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 8+16*3)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_T_Encaps_Red2",
+      "id" : 13,
+      "runtime_data" : [
+        {
+          "name" : "srcAddr",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid0",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid1",
+          "bitwidth" : 128
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 122,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_inner)"
+          }
+        },
+        {
+          "op" : "assign_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            },
+            {
+              "type" : "header",
+              "value" : "ipv6"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 123,
+            "column" : 1,
+            "source_fragment" : "copy_header(ipv6_inner, ipv6)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0028"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 125,
+            "column" : 1,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 40)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "srcAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 127,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.srcAddr, srcAddr); ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 108,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x29"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 109,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, proto); ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "routingType"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 111,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.routingType, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 114,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.flags, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "tag"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 115,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.tag, 0)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 237,
+            "column" : 4,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 233,
+            "column" : 41,
+            "source_fragment" : "sid1) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "hdrExtLen"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 239,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.hdrExtLen, 2)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 240,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.segmentsLeft, 1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 241,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.lastEntry, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2b"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 243,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 43)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 233,
+            "column" : 35,
+            "source_fragment" : "sid0, sid1) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0018"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 245,
+            "column" : 4,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 8+16*1)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_T_Encaps_Red3",
+      "id" : 14,
+      "runtime_data" : [
+        {
+          "name" : "srcAddr",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid0",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid1",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid2",
+          "bitwidth" : 128
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 122,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_inner)"
+          }
+        },
+        {
+          "op" : "assign_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            },
+            {
+              "type" : "header",
+              "value" : "ipv6"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 123,
+            "column" : 1,
+            "source_fragment" : "copy_header(ipv6_inner, ipv6)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0028"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 125,
+            "column" : 1,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 40)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "srcAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 127,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.srcAddr, srcAddr); ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 108,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x29"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 109,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, proto); ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "routingType"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 111,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.routingType, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 114,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.flags, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "tag"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 115,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.tag, 0)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 251,
+            "column" : 4,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 247,
+            "column" : 47,
+            "source_fragment" : "sid2) { ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 253,
+            "column" : 4,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[1])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[1]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 247,
+            "column" : 41,
+            "source_fragment" : "sid1, sid2) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "hdrExtLen"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 255,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.hdrExtLen, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 256,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.segmentsLeft, 2)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 257,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.lastEntry, 1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2b"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 259,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 43)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 247,
+            "column" : 35,
+            "source_fragment" : "sid0, sid1, sid2) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0028"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 261,
+            "column" : 4,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 8+16*2)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_End0",
+      "id" : 15,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6_srh", "segmentsLeft"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 280,
+            "column" : 1,
+            "source_fragment" : "subtract_from_field(ipv6_srh.segmentsLeft, 1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 281,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.dstAddr, ipv6_srh_segment_list[0].sid)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_End1",
+      "id" : 16,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6_srh", "segmentsLeft"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 284,
+            "column" : 1,
+            "source_fragment" : "subtract_from_field(ipv6_srh.segmentsLeft, 1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[1]", "sid"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 285,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.dstAddr, ipv6_srh_segment_list[1].sid)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_End_DT6",
+      "id" : 17,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6"
+            },
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 298,
+            "column" : 1,
+            "source_fragment" : "copy_header(ipv6, ipv6_inner)"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 299,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 302,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 303,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_srh_segment_list[1])"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[2]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 304,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_srh_segment_list[2])"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[3]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 305,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_srh_segment_list[3])"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 306,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_inner)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_End_M_GTP6_D2",
+      "id" : 18,
+      "runtime_data" : [
+        {
+          "name" : "srcAddr",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid0",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid1",
+          "bitwidth" : 128
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "udp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 312,
+            "column" : 1,
+            "source_fragment" : "remove_header(udp)"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "gtpu"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 313,
+            "column" : 1,
+            "source_fragment" : "remove_header(gtpu)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xfff0"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 314,
+            "column" : 4,
+            "source_fragment" : "subtract_from_field(ipv6.payloadLen, 16)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2b"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 315,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 43)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0018"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 316,
+            "column" : 4,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 8+16*1)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 108,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 109,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, proto); ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "routingType"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 111,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.routingType, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 114,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.flags, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "tag"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 115,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.tag, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x29"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 319,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, 41)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 320,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 311,
+            "column" : 41,
+            "source_fragment" : "sid1) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "hdrExtLen"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 323,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.hdrExtLen, 2)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 324,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.segmentsLeft, 1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 325,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.lastEntry, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "srcAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 311,
+            "column" : 26,
+            "source_fragment" : "srcAddr, sid0, sid1) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 311,
+            "column" : 35,
+            "source_fragment" : "sid0, sid1) { ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_End_M_GTP6_D3",
+      "id" : 19,
+      "runtime_data" : [
+        {
+          "name" : "srcAddr",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid0",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid1",
+          "bitwidth" : 128
+        },
+        {
+          "name" : "sid2",
+          "bitwidth" : 128
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "udp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 336,
+            "column" : 1,
+            "source_fragment" : "remove_header(udp)"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "gtpu"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 337,
+            "column" : 1,
+            "source_fragment" : "remove_header(gtpu)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xfff0"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 338,
+            "column" : 4,
+            "source_fragment" : "subtract_from_field(ipv6.payloadLen, 16)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2b"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 341,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 43)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0028"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 342,
+            "column" : 4,
+            "source_fragment" : "add_to_field(ipv6.payloadLen, 8+16*2)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 108,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 109,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, proto); ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "routingType"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 111,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.routingType, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 114,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.flags, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "tag"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 115,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6_srh.tag, 0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "nextHeader"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x29"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 345,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.nextHeader, 41)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 346,
+            "column" : 1,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 332,
+            "column" : 47,
+            "source_fragment" : "sid2) { ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 348,
+            "column" : 4,
+            "source_fragment" : "add_header(ipv6_srh_segment_list[1])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[1]", "sid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 332,
+            "column" : 41,
+            "source_fragment" : "sid1, sid2) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "hdrExtLen"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x04"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 351,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.hdrExtLen, 4)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "segmentsLeft"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 352,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.segmentsLeft, 2)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh", "lastEntry"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 353,
+            "column" : 4,
+            "source_fragment" : "modify_field(ipv6_srh.lastEntry, 1)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "srcAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 332,
+            "column" : 26,
+            "source_fragment" : "srcAddr, sid0, sid1, sid2) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 332,
+            "column" : 35,
+            "source_fragment" : "sid0, sid1, sid2) { ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "srv6_End_M_GTP6_E",
+      "id" : 20,
+      "runtime_data" : [
+        {
+          "name" : "srcAddr",
+          "bitwidth" : 128
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "srcAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 360,
+            "column" : 25,
+            "source_fragment" : "srcAddr) { ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata._srv6_meta_teid0"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "dstAddr"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xffffffff"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 369,
+            "column" : 1,
+            "source_fragment" : "bit_and(srv6_meta.teid, 0x000000000000000000000000ffffffff, ipv6.dstAddr)"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 372,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_srh)"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 373,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_srh_segment_list[0])"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 374,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_srh_segment_list[1])"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[2]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 375,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_srh_segment_list[2])"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_srh_segment_list[3]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 376,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_srh_segment_list[3])"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "dstAddr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6_srh_segment_list[0]", "sid"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 380,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.dstAddr, ipv6_srh_segment_list[0].sid)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata._srv6_meta_ipv6_payloadLen3"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "+",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "&",
+                                  "left" : {
+                                    "type" : "expression",
+                                    "value" : {
+                                      "op" : "+",
+                                      "left" : {
+                                        "type" : "expression",
+                                        "value" : {
+                                          "op" : "&",
+                                          "left" : {
+                                            "type" : "expression",
+                                            "value" : {
+                                              "op" : "+",
+                                              "left" : {
+                                                "type" : "field",
+                                                "value" : ["ipv6", "payloadLen"]
+                                              },
+                                              "right" : {
+                                                "type" : "hexstr",
+                                                "value" : "0x0008"
+                                              }
+                                            }
+                                          },
+                                          "right" : {
+                                            "type" : "hexstr",
+                                            "value" : "0xffff"
+                                          }
+                                        }
+                                      },
+                                      "right" : {
+                                        "type" : "hexstr",
+                                        "value" : "0x0008"
+                                      }
+                                    }
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0xffff"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xfff8"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xfff0"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 382,
+            "column" : 27,
+            "source_fragment" : "= ipv6.payloadLen+8+8-8-"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "+",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "&",
+                                  "left" : {
+                                    "type" : "expression",
+                                    "value" : {
+                                      "op" : "+",
+                                      "left" : {
+                                        "type" : "expression",
+                                        "value" : {
+                                          "op" : "&",
+                                          "left" : {
+                                            "type" : "expression",
+                                            "value" : {
+                                              "op" : "+",
+                                              "left" : {
+                                                "type" : "field",
+                                                "value" : ["ipv6", "payloadLen"]
+                                              },
+                                              "right" : {
+                                                "type" : "hexstr",
+                                                "value" : "0x0008"
+                                              }
+                                            }
+                                          },
+                                          "right" : {
+                                            "type" : "hexstr",
+                                            "value" : "0xffff"
+                                          }
+                                        }
+                                      },
+                                      "right" : {
+                                        "type" : "hexstr",
+                                        "value" : "0x0008"
+                                      }
+                                    }
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0xffff"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xfff8"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xfff0"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 382,
+            "column" : 50,
+            "source_fragment" : "-16; // TODO ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv6", "nextHdr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x11"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 384,
+            "column" : 1,
+            "source_fragment" : "modify_field(ipv6.nextHdr, 17)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "udp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 386,
+            "column" : 1,
+            "source_fragment" : "add_header(udp)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "gtpu"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 387,
+            "column" : 1,
+            "source_fragment" : "add_header(gtpu)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "gtpu_ipv6"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 390,
+            "column" : 1,
+            "source_fragment" : "add_header(gtpu_ipv6)"
+          }
+        },
+        {
+          "op" : "assign_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "gtpu_ipv6"
+            },
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 391,
+            "column" : 1,
+            "source_fragment" : "copy_header(gtpu_ipv6, ipv6_inner)"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ipv6_inner"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 392,
+            "column" : 1,
+            "source_fragment" : "remove_header(ipv6_inner)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "srcPort"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x03e8"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 394,
+            "column" : 4,
+            "source_fragment" : "modify_field(udp.srcPort, 1000)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "dstPort"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0868"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 395,
+            "column" : 4,
+            "source_fragment" : "modify_field(udp.dstPort, 2152)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "length_"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6", "payloadLen"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 398,
+            "column" : 4,
+            "source_fragment" : "modify_field(udp.length_, ipv6.payloadLen)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["gtpu", "teid"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata._srv6_meta_teid0"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 401,
+            "column" : 1,
+            "source_fragment" : "modify_field(gtpu.teid, srv6_meta.teid)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["gtpu", "flags"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x30"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 402,
+            "column" : 4,
+            "source_fragment" : "modify_field(gtpu.flags, 0x30)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["gtpu", "type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0xff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 403,
+            "column" : 4,
+            "source_fragment" : "modify_field(gtpu.type, 255)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["gtpu", "length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv6", "payloadLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xfff0"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "include/srv6.p4",
+            "line" : 406,
+            "column" : 4,
+            "source_fragment" : "modify_field(gtpu.length, udp.length_-16)"
+          }
+        }
+      ]
+    }
+  ],
+  "pipelines" : [
+    {
+      "name" : "ingress",
+      "id" : 0,
+      "init_table" : "fwd",
+      "tables" : [
+        {
+          "name" : "fwd",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "p4srv6.p4",
+            "line" : 37,
+            "column" : 0,
+            "source_fragment" : "table fwd { ..."
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "standard_metadata.ingress_port",
+              "target" : ["standard_metadata", "ingress_port"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [3, 4, 0],
+          "actions" : ["forward", "_drop", "NoAction"],
+          "base_default_next" : "gtpu_v6",
+          "next_tables" : {
+            "forward" : "gtpu_v6",
+            "_drop" : "gtpu_v6",
+            "NoAction" : "gtpu_v6"
+          },
+          "default_entry" : {
+            "action_id" : 0,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "gtpu_v6",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "p4srv6.p4",
+            "line" : 62,
+            "column" : 0,
+            "source_fragment" : "table gtpu_v6 { ..."
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "ipv6.dstAddr",
+              "target" : ["ipv6", "dstAddr"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [5, 6, 1],
+          "actions" : ["gtpu_encap_v6", "gtpu_decap_v6", "NoAction"],
+          "base_default_next" : "srv6_localsid",
+          "next_tables" : {
+            "gtpu_encap_v6" : "srv6_localsid",
+            "gtpu_decap_v6" : "srv6_localsid",
+            "NoAction" : "srv6_localsid"
+          },
+          "default_entry" : {
+            "action_id" : 1,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "srv6_localsid",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "p4srv6.p4",
+            "line" : 46,
+            "column" : 0,
+            "source_fragment" : "table srv6_localsid { ..."
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "ipv6.dstAddr",
+              "target" : ["ipv6", "dstAddr"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 2],
+          "actions" : ["srv6_T_Insert1", "srv6_T_Insert2", "srv6_T_Insert3", "srv6_T_Encaps2", "srv6_T_Encaps1", "srv6_T_Encaps3", "srv6_T_Encaps_Red2", "srv6_T_Encaps_Red3", "srv6_End0", "srv6_End1", "srv6_End_DT6", "srv6_End_M_GTP6_D2", "srv6_End_M_GTP6_D3", "srv6_End_M_GTP6_E", "NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "srv6_T_Insert1" : null,
+            "srv6_T_Insert2" : null,
+            "srv6_T_Insert3" : null,
+            "srv6_T_Encaps2" : null,
+            "srv6_T_Encaps1" : null,
+            "srv6_T_Encaps3" : null,
+            "srv6_T_Encaps_Red2" : null,
+            "srv6_T_Encaps_Red3" : null,
+            "srv6_End0" : null,
+            "srv6_End1" : null,
+            "srv6_End_DT6" : null,
+            "srv6_End_M_GTP6_D2" : null,
+            "srv6_End_M_GTP6_D3" : null,
+            "srv6_End_M_GTP6_E" : null,
+            "NoAction" : null
+          },
+          "default_entry" : {
+            "action_id" : 2,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : []
+    },
+    {
+      "name" : "egress",
+      "id" : 1,
+      "init_table" : null,
+      "tables" : [],
+      "action_profiles" : [],
+      "conditionals" : []
+    }
+  ],
+  "checksums" : [],
+  "force_arith" : [],
+  "extern_instances" : [],
+  "field_aliases" : [],
+  "program" : "./p4srv6.p4i",
+  "__meta__" : {
+    "version" : [2, 18],
+    "compiler" : "https://github.com/p4lang/p4c"
+  }
+}
